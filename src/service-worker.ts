@@ -1,5 +1,5 @@
 declare var self: ServiceWorkerGlobalScope;
-import { timestamp, files, shell } from "@sapper/service-worker";
+import { timestamp, files, shell } from '@sapper/service-worker';
 
 const ASSETS = `cache${timestamp}`;
 
@@ -8,18 +8,18 @@ const ASSETS = `cache${timestamp}`;
 const to_cache = (shell as string[]).concat(files as string[]);
 const staticAssets = new Set(to_cache);
 
-self.addEventListener("install", (event: ExtendableEvent) => {
+self.addEventListener('install', (event: ExtendableEvent) => {
   event.waitUntil(
     caches
       .open(ASSETS)
       .then((cache) => cache.addAll(to_cache))
       .then(() => {
         ((self as any) as ServiceWorkerGlobalScope).skipWaiting();
-      })
+      }),
   );
 });
 
-self.addEventListener("activate", (event: ExtendableEvent) => {
+self.addEventListener('activate', (event: ExtendableEvent) => {
   event.waitUntil(
     caches.keys().then(async (keys) => {
       // delete old caches
@@ -28,7 +28,7 @@ self.addEventListener("activate", (event: ExtendableEvent) => {
       }
 
       ((self as any) as ServiceWorkerGlobalScope).clients.claim();
-    })
+    }),
   );
 });
 
@@ -51,20 +51,20 @@ async function fetchAndCache(request: Request) {
   }
 }
 
-self.addEventListener("fetch", (event: FetchEvent) => {
-  if (event.request.method !== "GET" || event.request.headers.has("range"))
+self.addEventListener('fetch', (event: FetchEvent) => {
+  if (event.request.method !== 'GET' || event.request.headers.has('range'))
     return;
 
   const url = new URL(event.request.url);
 
   // don't try to handle e.g. data: URIs
-  const isHttp = url.protocol.startsWith("http");
+  const isHttp = url.protocol.startsWith('http');
   const isDevServerRequest =
     url.hostname === self.location.hostname && url.port !== self.location.port;
   const isStaticAsset =
     url.host === self.location.host && staticAssets.has(url.pathname);
   const skipBecauseUncached =
-    event.request.cache === "only-if-cached" && !isStaticAsset;
+    event.request.cache === 'only-if-cached' && !isStaticAsset;
 
   if (isHttp && !isDevServerRequest && !skipBecauseUncached) {
     event.respondWith(
@@ -85,7 +85,7 @@ self.addEventListener("fetch", (event: FetchEvent) => {
 				*/
 
         return cachedAsset || fetchAndCache(event.request);
-      })()
+      })(),
     );
   }
 });

@@ -1,55 +1,35 @@
-<script>
-  import successkid from "images/successkid.jpg";
-</script>
-
 <style>
-  h1,
-  figure,
-  p {
-    text-align: center;
-    margin: 0 auto;
-  }
-
   h1 {
-    font-size: 2.8em;
-    text-transform: uppercase;
-    font-weight: 700;
-    margin: 0 0 0.5em 0;
+    text-align: center;
   }
 
-  figure {
-    margin: 0 0 1em 0;
-  }
-
-  img {
-    width: 100%;
-    max-width: 400px;
-    margin: 0 0 1em 0;
-  }
-
-  p {
-    margin: 1em auto;
-  }
-
-  @media (min-width: 480px) {
-    h1 {
-      font-size: 4em;
-    }
+  .darkModeToggle {
+    position: absolute;
+    z-index: 2;
+    top: 0.5rem;
+    right: 0.5rem;
   }
 </style>
 
+<script>
+  import Screen from '@/components/Screen.svelte';
+  import ViewportDimensions from '@/components/ViewportDimensions.svelte';
+  import BrowserSettings from '@/components/BrowserSettings.svelte';
+  import Connection from '@/components/Connection.svelte';
+  import MediaQuery from '@/components/MediaQuery.svelte';
+  import DarkModeToggle from '@/components/DarkModeToggle.svelte';
+</script>
+
 <svelte:head>
-  <title>Sapper project template</title>
+  <title>About my device</title>
 </svelte:head>
+<h1>About my device</h1>
 
-<h1>Great success!</h1>
-
-<figure>
-  <img alt="Success Kid" src={successkid} />
-  <figcaption>Have fun with Sapper!</figcaption>
-</figure>
-
-<p>
-  <strong>Try editing this file (src/routes/index.svelte) to test live
-    reloading.</strong>
-</p>
+<div class="darkModeToggle">
+  <DarkModeToggle />
+</div>
+<ViewportDimensions />
+<Screen />
+<BrowserSettings />
+<Connection />
+<MediaQuery />

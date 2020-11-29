@@ -1,11 +1,12 @@
 {
-  "name": "TODO",
-  "description": "TODO",
+  "name": "about-my-device",
+  "description": "A Web app that displays a collection of useful infos about the device",
+  "private": "true",
   "version": "0.0.1",
   "scripts": {
-    "dev": "sapper dev",
-    "build": "sapper build",
-    "export": "sapper export",
+    "dev": "cross-env NODE_ENV=development sapper dev",
+    "build": "cross-env NODE_ENV=production npx --no-install sapper build",
+    "export": "cross-env NODE_ENV=production npx --no-install sapper export",
     "start": "node __sapper__/build",
     "validate": "svelte-check --ignore src/node_modules/@sapper"
   },
@@ -23,12 +24,17 @@
   },
   "dependencies": {
     "compression": "^1.7.1",
+    "cross-env": "^7.0.2",
     "polka": "next",
-    "sirv": "^1.0.0"
+    "sirv": "^1.0.0",
+    "utility-types": "^3.10.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "@babel/preset-env": "^7.12.7",
     "@tsconfig/svelte": "^1.0.10",
     "@types/compression": "^1.7.0",
+    "@types/lodash-es": "^4.17.3",
     "@types/node": "^14.11.1",
     "@types/polka": "^0.5.1",
     "autoprefixer": "^10.0.4",

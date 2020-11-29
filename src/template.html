@@ -1,52 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <meta name="theme-color" content="#333333" />
 
-    %sapper.base%
-    <link rel="stylesheet" href="papercss1.8.2.min.css" />
-    <link rel="stylesheet" href="global.css" />
-    <link rel="manifest" href="manifest.json" crossorigin="use-credentials" />
-    <link rel="icon" type="image/png" href="favicon.png" />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <meta name="theme-color" content="#333333" />
 
-    <script>
-      const darkModeFlag = "dark";
-      const prefersDarkModeMediaQuery = window.matchMedia(
-        "(prefers-color-scheme: dark)"
-      );
+  %sapper.base%
+  <link rel="stylesheet" href="normalize8.0.1.css" />
+  <link rel="stylesheet" href="papercss1.8.2.min.css" />
+  <link rel="manifest" href="manifest.json" crossorigin="use-credentials" />
+  <link rel="icon" type="image/png" href="favicon.png" />
 
-      if (prefersDarkModeMediaQuery.matches) {
-        document.documentElement.classList.add(darkModeFlag);
-      }
+  <script>
+    "use strict";
+    const darkModeFlag = 'dark';
+    const prefersDarkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
-      prefersDarkModeMediaQuery.addListener((e) => {
-        if (e.matches) {
-          document.documentElement.classList.add(darkModeFlag);
-        } else {
-          document.documentElement.classList.remove(darkModeFlag);
-        }
-      });
-    </script>
+    if (prefersDarkModeMediaQuery.matches) {
+      document.documentElement.classList.add(darkModeFlag);
+    }
+  </script>
 
-    <!-- Sapper creates a <script> tag containing `src/client.js`
+  <!-- Sapper creates a <script> tag containing `src/client.js`
 	     and anything else it needs to hydrate the app and
 	     initialise the router -->
-    %sapper.scripts%
+  %sapper.scripts%
 
-    <!-- Sapper generates a <style> tag containing critical CSS
+  <!-- Sapper generates a <style> tag containing critical CSS
 	     for the current page. CSS for the rest of the app is
 	     lazily loaded when it precaches secondary pages -->
-    %sapper.styles%
+  %sapper.styles%
 
-    <!-- This contains the contents of the <svelte:head> component, if
+  <!-- This contains the contents of the <svelte:head> component, if
 	     the current page has one -->
-    %sapper.head%
-  </head>
-  <body>
-    <!-- The application will be rendered inside this element,
+  %sapper.head%
+</head>
+
+<body>
+  <!-- The application will be rendered inside this element,
 	     because `src/client.js` references it -->
-    <div id="sapper">%sapper.html%</div>
-  </body>
+  <div id="sapper">%sapper.html%</div>
+</body>
+
 </html>

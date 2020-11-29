@@ -1,0 +1,44 @@
+<script lang="ts">
+  import FeatureCard from '@/components/FeatureCard.svelte';
+  import { onMount } from 'svelte';
+  import Strong from '@/components/Strong.svelte';
+
+  let screen: Screen | null = null;
+  let devicePixelRatio: string = '';
+
+  $: screenDimensions = screen
+    ? `${screen.width}x${screen.height} css pixels`
+    : '';
+
+  onMount(() => {
+    const mqString = `(resolution: ${window.devicePixelRatio}dppx)`;
+    const mediaQuery = matchMedia(mqString);
+    screen = window.screen;
+
+    const updatePixelRatio = () => {
+      let pr = window.devicePixelRatio;
+      let prString = (pr * 100).toFixed(0);
+      devicePixelRatio = `${prString}% (${pr.toFixed(2)})`;
+    };
+
+    updatePixelRatio();
+
+    mediaQuery.addEventListener('change', updatePixelRatio);
+
+    return () => {
+      mediaQuery.removeEventListener('change', updatePixelRatio);
+    };
+  });
+</script>
+
+<FeatureCard id="screen">
+  <h3 slot="heading">Screen</h3>
+  <p>
+    Your screen size is
+    <Strong>{screenDimensions}</Strong>
+  </p>
+  <p>
+    The device pixel ratio (physical/css pixels) is
+    <Strong>{devicePixelRatio}</Strong>
+  </p>
+</FeatureCard>
