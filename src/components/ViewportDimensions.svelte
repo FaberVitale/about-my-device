@@ -72,11 +72,11 @@
 <FeatureCard id="viewport">
   <h3 slot="heading">Viewport</h3>
   <p>
-    Your viewport size is
+    Viewport size is
     <Strong>{width || ' '} x {height || ' '} css pixels</Strong>
   </p>
   <p>
-    Your viewport orietation is
+    Viewport orietation is
     <Strong>{orientation}</Strong>
   </p>
   <p>

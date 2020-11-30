@@ -34,7 +34,7 @@
 <FeatureCard id="screen">
   <h3 slot="heading">Screen</h3>
   <p>
-    Your screen size is
+    Screen size is
     <Strong>{screenDimensions}</Strong>
   </p>
   <p>

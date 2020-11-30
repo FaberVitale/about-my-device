@@ -75,14 +75,14 @@
     updateReduceMotion(reductionMotionMq);
     updateHover(supportsHoverMq);
 
-    supportsHoverMq.addListener(updateHover);
-    preferredColorSchemeMq.addListener(updateColorScheme);
-    reductionMotionMq.addListener(updateReduceMotion);
+    supportsHoverMq.addEventListener('change', updateHover);
+    preferredColorSchemeMq.addEventListener('change', updateColorScheme);
+    reductionMotionMq.addEventListener('change', updateReduceMotion);
 
     return () => {
-      preferredColorSchemeMq.removeListener(updateColorScheme);
-      reductionMotionMq.removeListener(updateReduceMotion);
-      supportsHoverMq.removeListener(updateHover);
+      preferredColorSchemeMq.removeEventListener('change', updateColorScheme);
+      reductionMotionMq.removeEventListener('change', updateReduceMotion);
+      supportsHoverMq.removeEventListener('change', updateHover);
     };
   });
 </script>
