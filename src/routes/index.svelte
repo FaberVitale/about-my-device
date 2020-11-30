@@ -1,6 +1,7 @@
 <style>
   h1 {
     text-align: center;
+    margin-bottom: 0.5rem;
   }
 
   .darkModeToggle {
@@ -18,6 +19,7 @@
   import Connection from '@/components/Connection.svelte';
   import MediaQuery from '@/components/MediaQuery.svelte';
   import DarkModeToggle from '@/components/DarkModeToggle.svelte';
+  import VirtualKeyboard from '@/components/VirtualKeyboard.svelte';
 </script>
 
 <svelte:head>
@@ -29,6 +31,7 @@
   <DarkModeToggle />
 </div>
 <ViewportDimensions />
+<VirtualKeyboard />
 <Screen />
 <BrowserSettings />
 <Connection />

@@ -15,9 +15,15 @@
   <script>
     (function () {
       "use strict";
-      var prefersDarkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+      var fromMq = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var colorScheme = 'light';
+      try {
+        colorScheme = localStorage.getItem('color-scheme');
+      } catch (err) {
+        console.error(err);
+      }
 
-      if (prefersDarkModeMediaQuery.matches) {
+      if (colorScheme === 'dark' || (colorScheme !== 'light' && fromMq)) {
         document.documentElement.classList.add('dark');
       }
     })();

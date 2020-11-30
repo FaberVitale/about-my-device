@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-
   import FeatureCard from './FeatureCard.svelte';
+  import Strong from './Strong.svelte';
 
   let isOnline: boolean = false;
   let effectiveType: string = '';
@@ -31,11 +31,14 @@
 
 <FeatureCard id="connection">
   <h3 slot="heading">Connection</h3>
-  <p>Connection status {isOnline ? 'onLine' : 'offLine'}</p>
-  {#if effectiveType}
+  <p>
+    Connection status
+    <Strong>{isOnline ? 'online' : 'offline'}</Strong>
+  </p>
+  {#if effectiveType && isOnline}
     <p>Connection effective type <strong>{effectiveType}</strong></p>
   {/if}
-  {#if downlink}
+  {#if downlink && isOnline}
     <p>Approximate download bandwidth <strong>{downlink}</strong></p>
   {/if}
 </FeatureCard>

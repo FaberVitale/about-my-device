@@ -1,16 +1,18 @@
 <script lang="ts">
   import { onMount } from 'svelte';
+  import { setStorageItem } from '@/utils/storage';
 
   let toggle = false;
-
   let mounted = false;
 
   $: {
     if (__BROWSER__ && mounted) {
       if (toggle) {
         window.document.documentElement.classList.add('dark');
+        setStorageItem('color-scheme', 'dark');
       } else {
         window.document.documentElement.classList.remove('dark');
+        setStorageItem('color-scheme', 'light');
       }
     }
   }
@@ -22,7 +24,7 @@
 </script>
 
 {#if mounted}
-  <form>
+  <form on:submit|preventDefault>
     <fieldset class="form-group">
       <label for="dark-mode-switcher" class="paper-switch-2-label">
         Dark mode

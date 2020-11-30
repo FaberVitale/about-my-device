@@ -39,6 +39,9 @@
   let height: number = 0;
   let orientation: string = '';
 
+  let inputText: HTMLInputElement | null = null;
+  let inputNumeric: HTMLInputElement | null = null;
+
   onMount(() => {
     const handleSizeChange = () => {
       width = document.documentElement.clientWidth;
