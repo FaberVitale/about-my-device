@@ -8,6 +8,8 @@
     "build": "cross-env NODE_ENV=production npx --no-install sapper build",
     "export": "cross-env NODE_ENV=production npx --no-install sapper export",
     "start": "node __sapper__/build",
+    "prettify": "prettier --write",
+    "lint:ts": "tsc --noEmit",
     "validate": "svelte-check --ignore src/node_modules/@sapper"
   },
   "browserslist": {
@@ -39,6 +41,8 @@
     "@types/polka": "^0.5.1",
     "autoprefixer": "^10.0.4",
     "file-loader": "^6.0.0",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.5.2",
     "node-sass": "npm:sass",
     "postcss": "^8.1.10",
     "postcss-flexbugs-fixes": "^5.0.2",
