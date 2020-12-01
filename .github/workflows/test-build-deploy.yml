@@ -7,7 +7,7 @@ name: Test, build and deploy
 on:
   push:
     branches:
-      - master
+      - main
 jobs:
   build:
     runs-on: ubuntu-latest
