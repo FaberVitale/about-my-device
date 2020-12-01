@@ -27,7 +27,7 @@
   <form on:submit|preventDefault>
     <fieldset class="form-group">
       <label for="dark-mode-switcher" class="paper-switch-2-label">
-        Dark mode
+        Dark theme
       </label>
       <label class="paper-switch-2">
         <input
