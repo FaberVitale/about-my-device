@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { fade } from 'svelte/transition';
   import { onMount } from 'svelte';
   import FeatureCard from './FeatureCard.svelte';
   import Strong from './Strong.svelte';
@@ -6,6 +7,13 @@
   let isOnline: boolean = false;
   let effectiveType: string = '';
   let downlink: string = '';
+  let ipRequest: Promise<string> | null = null;
+
+  const requestIp = () => {
+    ipRequest = fetch('https://icanhazip.com/')
+      .catch(() => fetch('https://api6.ipify.org/'))
+      .then((res) => res.text());
+  };
 
   onMount(() => {
     function updateConnectionStatus() {
@@ -40,5 +48,15 @@
   {/if}
   {#if downlink && isOnline}
     <p>Approximate download bandwidth <strong>{downlink}</strong></p>
+  {/if}
+  {#if isOnline}
+    <button type="button" on:click="{requestIp}">Show IP</button>
+  {/if}
+  {#if ipRequest}
+    {#await ipRequest then ip}
+      <code class="badge" in:fade>{ip}</code>
+    {:catch}
+      <span>Couldn't fetch ip. Wanna retry?</span>
+    {/await}
   {/if}
 </FeatureCard>
