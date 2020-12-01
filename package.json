@@ -3,6 +3,7 @@
   "description": "A Web app that displays a collection of useful infos about the device",
   "private": "true",
   "version": "0.0.1",
+  "license": "MIT",
   "scripts": {
     "dev": "cross-env NODE_ENV=development sapper dev",
     "build": "cross-env NODE_ENV=production npx --no-install sapper build",
