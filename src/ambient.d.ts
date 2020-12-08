@@ -39,3 +39,5 @@ declare module '*.webp' {
 }
 
 declare var __BROWSER__: boolean;
+
+declare var __DEV__: boolean;

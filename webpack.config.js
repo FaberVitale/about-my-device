@@ -87,7 +87,8 @@ module.exports = {
       // pending https://github.com/sveltejs/svelte/issues/2377
       // dev && new webpack.HotModuleReplacementPlugin(),
       new webpack.DefinePlugin({
-        '__BROWSER__': true,
+        __DEV__: dev,
+        __BROWSER__: true,
         'process.env.NODE_ENV': JSON.stringify(mode),
       }),
     ].filter(Boolean),
@@ -127,7 +128,8 @@ module.exports = {
     plugins: [
       new WebpackModules(),
       new webpack.DefinePlugin({
-        '__BROWSER__': false,
+        __DEV__: dev,
+        __BROWSER__: false,
         'process.env.NODE_ENV': JSON.stringify(mode),
       }),
     ],

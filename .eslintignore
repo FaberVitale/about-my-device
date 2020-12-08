@@ -1,0 +1,6 @@
+.github
+__sapper__
+.vscode
+node_modules
+.eslintrc*
+static
