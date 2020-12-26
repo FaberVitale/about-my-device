@@ -18,7 +18,7 @@
       var fromMq = window.matchMedia('(prefers-color-scheme: dark)').matches;
       var colorScheme = 'light';
       try {
-        colorScheme = localStorage.getItem('color-scheme');
+        colorScheme = JSON.parse(localStorage.getItem('color-scheme'));
       } catch (err) {
         console.error(err);
       }
