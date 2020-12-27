@@ -28,6 +28,12 @@
       content: 'xl';
     }
   }
+
+  @media (min-width: 1400px) {
+    .breakpoint::before {
+      content: 'xxl';
+    }
+  }
 </style>
 
 <script lang="ts">
@@ -80,7 +86,7 @@
     <Strong>{orientation}</Strong>
   </p>
   <p>
-    Bootstrap 4 breakpoint
+    Bootstrap 5 breakpoint
     <Strong><span class="breakpoint"></span></Strong>
   </p>
 </FeatureCard>
