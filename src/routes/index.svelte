@@ -1,7 +1,11 @@
-<style>
+<style lang="scss">
   h1 {
     text-align: center;
     margin-bottom: 0.5rem;
+
+    @media (max-width: 768px) {
+      font-size: 3rem;
+    }
   }
 
   .darkModeToggle {
