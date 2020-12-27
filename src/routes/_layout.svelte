@@ -24,6 +24,9 @@
 
 <script lang="ts">
   import Footer from '@/components/Footer.svelte';
+  import { useRestoreAnchorPosition } from '@/utils/routing';
+
+  useRestoreAnchorPosition();
 </script>
 
 <main class="main">
