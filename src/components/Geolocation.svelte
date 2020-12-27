@@ -1,19 +1,20 @@
 <style lang="scss">
   .geo-table {
     padding: 0.5rem 0;
+    max-width: 100%;
+    overflow-x: auto;
+    font-size: 0.8rem;
+    overflow-wrap: break-word;
   }
 
   .coord-wrapper {
     padding: 0.2rem 0;
-    display: grid;
-    grid-gap: 0.2rem;
-
-    @media all and (min-width: 768px) {
-      grid-template-columns: repeat(3, 1fr);
-    }
   }
 
   .coord-section {
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-wrap: break-word;
     padding: 0.5rem 0;
   }
 </style>
@@ -60,7 +61,7 @@
   function getGeolocationErrorMessage(geoError: unknown): string {
     if (geoError instanceof GeolocationPositionError) {
       if (geoError.code === GeolocationPositionErrorCodes.PERMISSION_DENIED) {
-        return `You need to accept the geolocation prompt to get your position`;
+        return `You need to accept the geolocation prompt to get your position or check that your device has geolocation activated.`;
       }
     }
 
@@ -86,10 +87,10 @@
       {#await currentPos then geoPos}
         <section class="coord-section">
           <h4>Geo coordinates</h4>
-          <div class="coord-wrapper">
-            <Strong>{`latitude: ${geoPos.coords.latitude}`}</Strong>
-            <Strong>{`longitude: ${geoPos.coords.longitude}`}</Strong>
-          </div>
+          <ul class="coord-wrapper">
+            <li>{`latitude: ${geoPos.coords.latitude}`}</li>
+            <li>{`longitude: ${geoPos.coords.longitude}`}</li>
+          </ul>
         </section>
       {:catch geoErr}
         <p>{getGeolocationErrorMessage(geoErr)}</p>
