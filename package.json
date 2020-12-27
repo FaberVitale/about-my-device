@@ -32,6 +32,7 @@
     "cross-env": "^7.0.2",
     "polka": "next",
     "sirv": "^1.0.0",
+    "slugify": "^1.4.6",
     "storage-helpers": "^0.4.1",
     "utility-types": "^3.10.0"
   },
