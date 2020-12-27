@@ -9,6 +9,7 @@
 
   body {
     background-color: var(--main-background);
+    transition: background-color 200ms linear;
   }
 
   h1,

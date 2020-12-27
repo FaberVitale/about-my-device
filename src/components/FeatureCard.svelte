@@ -1,6 +1,7 @@
 <style lang="scss">
   article {
     margin-bottom: 1.5rem;
+    overflow-x: hidden;
   }
 </style>
 

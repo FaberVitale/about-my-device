@@ -20,6 +20,7 @@
   import MediaQuery from '@/components/MediaQuery.svelte';
   import DarkModeToggle from '@/components/DarkModeToggle.svelte';
   import VirtualKeyboard from '@/components/VirtualKeyboard.svelte';
+  import Geolocation from '@/components/Geolocation.svelte';
 </script>
 
 <svelte:head>
@@ -33,6 +34,7 @@
 <ViewportDimensions />
 <VirtualKeyboard />
 <Screen />
-<BrowserSettings />
+<Geolocation />
 <Connection />
+<BrowserSettings />
 <MediaQuery />
