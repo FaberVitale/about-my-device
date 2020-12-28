@@ -41,14 +41,18 @@
   import FeatureCard from '@/components/FeatureCard.svelte';
   import { onMount } from 'svelte';
 
-  let width: number = 0;
-  let height: number = 0;
+  let innerWindowWidth: number = 0;
+  let widthWithoutScrollbar: number = 0;
+  let innerWindowHeight: number = 0;
+  let heightWithoutScrollbar: number = 0;
   let orientation: string = '';
 
   onMount(() => {
     const handleSizeChange = () => {
-      width = document.documentElement.clientWidth;
-      height = document.documentElement.clientHeight;
+      innerWindowWidth = window.innerWidth;
+      widthWithoutScrollbar = document.documentElement.clientWidth;
+      innerWindowHeight = window.innerHeight;
+      heightWithoutScrollbar = document.documentElement.clientHeight;
     };
 
     const onOrientationChange = ({
@@ -78,8 +82,22 @@
 <FeatureCard id="viewport">
   <h3 slot="heading">Viewport</h3>
   <p>
-    Viewport size is
-    <Strong>{width || ' '} x {height || ' '} css pixels</Strong>
+    Viewport size with scrollbars is
+    <Strong>
+      {innerWindowWidth || ' '}
+      x
+      {innerWindowHeight || ' '}
+      css pixels
+    </Strong>
+  </p>
+  <p>
+    Viewport size without scrollbars is
+    <Strong>
+      {widthWithoutScrollbar || ' '}
+      x
+      {heightWithoutScrollbar || ' '}
+      css pixels
+    </Strong>
   </p>
   <p>
     Viewport orietation is
