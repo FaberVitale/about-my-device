@@ -1,4 +1,6 @@
 <style global lang="scss">
+  $safe-area-inset-list: 'safe-area-inset-top', 'safe-area-inset-right',
+    'safe-area-inset-bottom', 'safe-area-inset-left';
   .main {
     position: relative;
     max-width: 56em;
@@ -19,6 +21,12 @@
   h5,
   h6 {
     margin: 0;
+  }
+
+  :root {
+    @each $elem in $safe-area-inset-list {
+      --#{$elem}: env(#{$elem}, 0px);
+    }
   }
 </style>
 

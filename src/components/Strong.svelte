@@ -1,7 +1,7 @@
 <style lang="scss">
   strong {
     font-weight: 900;
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 </style>
 
