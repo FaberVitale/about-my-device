@@ -101,12 +101,7 @@
   <h3 slot="heading">Viewport</h3>
   <p>
     size with scrollbars is
-    <Strong>
-      {innerWindowWidth || ' '}
-      x
-      {innerWindowHeight || ' '}
-      css pixels
-    </Strong>
+    <Strong>{innerWindowWidth || ' '} x {innerWindowHeight || ' '} px</Strong>
   </p>
   <p>
     size without scrollbars is
@@ -114,11 +109,11 @@
       {widthWithoutScrollbar || ' '}
       x
       {heightWithoutScrollbar || ' '}
-      css pixels
+      px
     </Strong>
   </p>
   <p>
-    orietation is
+    orientation is
     <Strong>{orientation}</Strong>
   </p>
   <p>

@@ -1,7 +1,4 @@
-import { escape } from 'html-escaper';
 import type { ValuesType } from 'utility-types';
-
-import { memoize } from '@/utils/memoize';
 
 const positions = ['top', 'right', 'bottom', 'left'] as const;
 
@@ -14,15 +11,13 @@ export function popOver(
   nodeElement: HTMLElement,
   params?: Partial<PopOverParams>,
 ) {
-  const escapeText = memoize(escape);
-
   function applyPopOver(appliedParams?: Partial<PopOverParams>) {
     const text = appliedParams?.text ?? '';
     const position = appliedParams?.position ?? 'right';
 
     for (const pos of positions) {
       if (position === pos) {
-        nodeElement.setAttribute(`popover-${pos}`, escapeText(text));
+        nodeElement.setAttribute(`popover-${pos}`, text);
       } else {
         nodeElement.removeAttribute(`popover-${pos}`);
       }
