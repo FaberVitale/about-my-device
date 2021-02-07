@@ -25,6 +25,7 @@
   import DarkModeToggle from '@/components/DarkModeToggle.svelte';
   import VirtualKeyboard from '@/components/VirtualKeyboard.svelte';
   import Geolocation from '@/components/Geolocation.svelte';
+  import FormWidgets from '@/components/FormWidgets.svelte';
 </script>
 
 <svelte:head>
@@ -37,6 +38,7 @@
 </div>
 <ViewportDimensions />
 <VirtualKeyboard />
+<FormWidgets />
 <Screen />
 <Geolocation />
 <Connection />
