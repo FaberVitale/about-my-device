@@ -1,5 +1,13 @@
 import * as sapper from '@sapper/app';
 
-sapper.start({
-  target: document.querySelector('#sapper'),
-});
+const rootId = 'sapper';
+
+const rootNode = document.getElementById(rootId);
+
+if (rootNode) {
+  sapper.start({
+    target: rootNode,
+  });
+} else {
+  console.error(`[boostrap][sapper]: couldn't locate root node "#${rootId}"`);
+}
