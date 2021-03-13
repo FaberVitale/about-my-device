@@ -80,7 +80,7 @@
     <Strong>{defaultTimeZone || ''}</Strong>
   </p>
   {#if hasGeo}
-    <button type="button" on:click="{handleGetPosClick}">Get position</button>
+    <button type="button" on:click={handleGetPosClick}>Get position</button>
   {/if}
   {#if currentPos}
     <div>

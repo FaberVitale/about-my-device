@@ -50,7 +50,7 @@
     <p>Approximate download bandwidth <strong>{downlink}</strong></p>
   {/if}
   {#if isOnline}
-    <button type="button" on:click="{requestIp}">Show IP</button>
+    <button type="button" on:click={requestIp}>Show IP</button>
   {/if}
   {#if ipRequest}
     {#await ipRequest then ip}

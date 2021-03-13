@@ -39,8 +39,8 @@
   const href = `#${normalizedId}`;
 </script>
 
-<article class="paper border border-primary" id="{normalizedId}">
-  <a class="anchor" href="{href}">#</a>
+<article class="paper border border-primary" id={normalizedId}>
+  <a class="anchor" {href}>#</a>
   <heading>
     <slot name="heading" />
   </heading>

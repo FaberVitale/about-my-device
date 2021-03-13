@@ -118,7 +118,7 @@
   </p>
   <p>
     Bootstrap 5 breakpoint
-    <Strong><span class="breakpoint"></span></Strong>
+    <Strong><span class="breakpoint" /></Strong>
   </p>
   {#each positions as pos}
     <p>

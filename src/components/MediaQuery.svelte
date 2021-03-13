@@ -95,6 +95,6 @@
     Device input mechanism
     {supportsHover ? 'supports hover' : 'does not support hover'}
   </p>
-  <p>Pointer mechanism <span class="pointer"></span></p>
-  <p class="media-type"></p>
+  <p>Pointer mechanism <span class="pointer" /></p>
+  <p class="media-type" />
 </FeatureCard>

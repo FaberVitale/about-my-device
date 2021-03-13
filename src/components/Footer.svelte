@@ -26,19 +26,15 @@
   <ul>
     <li>
       Created by
-      <a
-        rel="noopener"
-        target="_blank"
-        href="https://github.com/FaberVitale"
-      >FaberVitale</a>
+      <a rel="noopener" target="_blank" href="https://github.com/FaberVitale"
+        >FaberVitale</a>
     </li>
     <li>
       Source is available on
       <a
         rel="noopener"
         target="_blank"
-        href="https://github.com/FaberVitale/about-my-device"
-      >github</a>
+        href="https://github.com/FaberVitale/about-my-device">github</a>
     </li>
     <li>
       Powered by

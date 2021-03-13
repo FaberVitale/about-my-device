@@ -27,24 +27,22 @@
 
   <p class="virtual-alert">It might not be available on your device.</p>
 
-  <button type="button" on:click="{() => inputText && inputText.focus()}">
+  <button type="button" on:click={() => inputText && inputText.focus()}>
     text keyboard
   </button>
-  <button type="button" on:click="{() => inputNumeric && inputNumeric.focus()}">
+  <button type="button" on:click={() => inputNumeric && inputNumeric.focus()}>
     numeric keyboard
   </button>
   <form
     class="hidden-form"
     aria-label="floating keyboard sample form"
-    on:submit|preventDefault
-  >
-    <input bind:this="{inputText}" type="text" name="text-input" />
+    on:submit|preventDefault>
+    <input bind:this={inputText} type="text" name="text-input" />
     <input
-      bind:this="{inputNumeric}"
+      bind:this={inputNumeric}
       inputmode="numeric"
       type="text"
       pattern="[0-9]*"
-      name="numeric-input"
-    />
+      name="numeric-input" />
   </form>
 </FeatureCard>

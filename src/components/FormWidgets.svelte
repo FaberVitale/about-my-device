@@ -87,14 +87,16 @@
     <h4>Input</h4>
     <form class="form" on:submit|preventDefault>
       <!-- svelte-ignore a11y-no-onchange -->
-      <label>type
-        <select name="type" on:change="{onSelectTypeChange}">
+      <label
+        >type
+        <select name="type" on:change={onSelectTypeChange}>
           {#each inputTypes as inputType}
-            <option value="{inputType}">{inputType}</option>
+            <option value={inputType}>{inputType}</option>
           {/each}
         </select>
       </label>
-      <label>input<input type="{$formValues.type}" on:input="{onInputChange}" />
+      <label
+        >input<input type={$formValues.type} on:input={onInputChange} />
       </label>
     </form>
     <output class="form-output">

@@ -67,7 +67,7 @@
     "postcss-import": "^13.0.0",
     "postcss-preset-env": "^6.7.0",
     "prettier": "^2.2.1",
-    "prettier-plugin-svelte": "^1.4.1",
+    "prettier-plugin-svelte": "^2.2.0",
     "sapper": "^0.29.1",
     "sass": "^1.32.6",
     "svelte": "3.32.1",
