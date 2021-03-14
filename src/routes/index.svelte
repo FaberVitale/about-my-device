@@ -26,6 +26,7 @@
   import VirtualKeyboard from '@/components/VirtualKeyboard.svelte';
   import Geolocation from '@/components/Geolocation.svelte';
   import FormWidgets from '@/components/FormWidgets.svelte';
+  import Navigation from '@/components/Navigation.svelte';
 </script>
 
 <svelte:head>
@@ -41,6 +42,7 @@
 <FormWidgets />
 <Screen />
 <Geolocation />
+<Navigation />
 <Connection />
 <BrowserSettings />
 <MediaQuery />
