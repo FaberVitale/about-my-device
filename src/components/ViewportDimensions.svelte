@@ -88,11 +88,11 @@
     onOrientationChange(orientationMediaQuery);
 
     window.addEventListener('resize', handleSizeChange);
-    orientationMediaQuery.addEventListener('change', onOrientationChange);
+    orientationMediaQuery.addListener(onOrientationChange);
 
     return () => {
       window.removeEventListener('resize', handleSizeChange);
-      orientationMediaQuery.removeEventListener('change', onOrientationChange);
+      orientationMediaQuery.removeListener(onOrientationChange);
     };
   });
 </script>

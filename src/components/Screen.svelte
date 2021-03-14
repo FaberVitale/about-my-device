@@ -23,10 +23,10 @@
 
     updatePixelRatio();
 
-    mediaQuery.addEventListener('change', updatePixelRatio);
+    mediaQuery.addListener(updatePixelRatio);
 
     return () => {
-      mediaQuery.removeEventListener('change', updatePixelRatio);
+      mediaQuery.removeListener(updatePixelRatio);
     };
   });
 </script>
