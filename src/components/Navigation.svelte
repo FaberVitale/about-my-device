@@ -53,33 +53,38 @@
   });
 
   onMount(() => {
-    const navigationType = window.performance?.navigation?.type;
-    if (typeof navigationType === 'number') {
+    try {
+      const navigationType = window.performance?.navigation?.type;
+
+      if (typeof navigationType !== 'number') {
+        throw new Error('window.performance.navigation is not supported');
+      }
+
       navigationTypeUsingPerformanceNavigationApi.resolve(navigationType);
-    } else {
-      navigationTypeUsingPerformanceNavigationApi.reject(
-        new Error('window.performance.navigation is not supported'),
-      );
+    } catch (navigationApiError) {
+      navigationTypeUsingPerformanceNavigationApi.reject(navigationApiError);
     }
 
     type PerformanceNavigationEntryWithType = PerformanceEntry & {
       type?: string;
     };
 
-    const performanceTimingNavigationType:
-      | string
-      | undefined = (window.performance?.getEntriesByType(
-      'navigation',
-    )?.[0] as PerformanceNavigationEntryWithType).type;
+    try {
+      const performanceTimingNavigationType:
+        | string
+        | undefined = (window.performance?.getEntriesByType(
+        'navigation',
+      )?.[0] as PerformanceNavigationEntryWithType)?.type;
 
-    if (typeof performanceTimingNavigationType === 'string') {
+      if (typeof performanceTimingNavigationType !== 'string') {
+        throw new Error('PerformanceNavigationTiming.type is not supported');
+      }
+
       navigationTypeUsingPerformanceNavigationTiming.resolve(
         performanceTimingNavigationType,
       );
-    } else {
-      navigationTypeUsingPerformanceNavigationTiming.reject(
-        new Error('PerformanceNavigationTiming.type is not supported'),
-      );
+    } catch (navigationApiError) {
+      navigationTypeUsingPerformanceNavigationTiming.reject(navigationApiError);
     }
   });
 </script>
