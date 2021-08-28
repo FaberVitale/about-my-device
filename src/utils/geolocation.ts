@@ -1,5 +1,6 @@
-import { fetchJson } from '@/utils/ajax';
-import { getStorageItem, setStorageItem, StorageConfig } from 'storage-helpers';
+import { fetchJson } from '$utils/ajax';
+import type { StorageConfig } from 'storage-helpers';
+import { getStorageItem, setStorageItem } from 'storage-helpers';
 
 export interface ReverseGeocoding {
   readonly place_id: string;
@@ -55,9 +56,7 @@ export enum GeolocationPositionErrorCodes {
   TIMEOUT = 3,
 }
 
-function fetchReverseGeocoding(
-  coords: Pick<GeolocationCoordinates, 'latitude' | 'longitude'>,
-) {
+function fetchReverseGeocoding(coords: Pick<GeolocationCoordinates, 'latitude' | 'longitude'>) {
   const apiUrl = new URL('https://nominatim.openstreetmap.org/reverse');
 
   apiUrl.searchParams.set('lat', coords.latitude + '');
@@ -69,9 +68,7 @@ function fetchReverseGeocoding(
 
 const reverseGeoKey = 'reverse-geo';
 const reverseGeoStaleAfterMs = 120_000;
-const reverseGeoStorageConfig: Readonly<
-  StorageConfig<ReverseGeoStoragePayload>
-> = {
+const reverseGeoStorageConfig: Readonly<StorageConfig<ReverseGeoStoragePayload>> = {
   version: 'v1',
   namespace: 'geo',
 };
@@ -79,15 +76,11 @@ const reverseGeoStorageConfig: Readonly<
 export function requestReverseGeocoding(
   coords: Pick<GeolocationCoordinates, 'latitude' | 'longitude'>,
 ): Promise<ReverseGeocoding> {
-  const value = getStorageItem<ReverseGeoStoragePayload>(
-    reverseGeoKey,
-    reverseGeoStorageConfig,
-  );
+  const value = getStorageItem<ReverseGeoStoragePayload>(reverseGeoKey, reverseGeoStorageConfig);
 
   if (value) {
     const isStoredReverseGeoFresh =
-      Math.abs(Date.now() - new Date(value.createdAt).getTime()) <=
-      reverseGeoStaleAfterMs;
+      Math.abs(Date.now() - new Date(value.createdAt).getTime()) <= reverseGeoStaleAfterMs;
 
     if (isStoredReverseGeoFresh) {
       return Promise.resolve(value.reverseGeo);

@@ -1,9 +1,3 @@
-<style lang="scss">
-  .text {
-    font-size: 0.8rem;
-  }
-</style>
-
 <script lang="ts" context="module">
   export const elems = ['p', 'span'] as const;
 </script>
@@ -19,3 +13,9 @@
 {:else}
   <span class="text"><slot /></span>
 {/if}
+
+<style lang="scss">
+  .text {
+    font-size: 0.8rem;
+  }
+</style>

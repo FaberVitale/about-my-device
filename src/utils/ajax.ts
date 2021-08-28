@@ -19,7 +19,7 @@ export class FetchResponseError extends Error {
   }
 }
 
-export function fetchJson<T>(url: string, init?: RequestInit | undefined) {
+export function fetchJson<T>(url: string, init?: RequestInit | undefined): Promise<T> {
   const fetchConfig = {
     ...init,
   };

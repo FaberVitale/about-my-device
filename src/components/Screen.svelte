@@ -1,14 +1,11 @@
 <script lang="ts">
-  import FeatureCard from '@/components/FeatureCard.svelte';
   import { onMount } from 'svelte';
-  import Strong from '@/components/Strong.svelte';
+  import FeatureCard from '$components/FeatureCard.svelte';
+  import Strong from '$components/Strong.svelte';
 
   let screen: Screen | null = null;
-  let devicePixelRatio: string = '';
-
-  $: screenDimensions = screen
-    ? `${screen.width}x${screen.height} css pixels`
-    : '';
+  let devicePixelRatio = '';
+  $: screenDimensions = screen ? `${screen.width}x${screen.height} css pixels` : '';
 
   onMount(() => {
     const mqString = `(resolution: ${window.devicePixelRatio}dppx)`;

@@ -1,40 +1,19 @@
-<style lang="scss">
-  .geo-table {
-    padding: 0.5rem 0;
-    max-width: 100%;
-    overflow-x: auto;
-    font-size: 0.8rem;
-    overflow-wrap: break-word;
-  }
-
-  .coord-wrapper {
-    padding: 0.2rem 0;
-  }
-
-  .coord-section {
-    max-width: 100%;
-    overflow-x: auto;
-    overflow-wrap: break-word;
-    padding: 0.5rem 0;
-  }
-</style>
-
 <script lang="ts">
   import { onMount } from 'svelte';
-  import FeatureCard from '@/components/FeatureCard.svelte';
-  import Strong from '@/components/Strong.svelte';
-  import { getDefaultTimezone } from '@/utils/i18n';
+  import FeatureCard from '$components/FeatureCard.svelte';
+  import Strong from '$components/Strong.svelte';
+  import { getDefaultTimezone } from '$utils/i18n';
   import {
     supportsGeolocation,
     getCurrentPos,
     GeolocationPositionErrorCodes,
     requestReverseGeocoding,
-  } from '@/utils/geolocation';
-  import type { ReverseGeocoding } from '@/utils/geolocation';
+  } from '$utils/geolocation';
+  import type { ReverseGeocoding } from '$utils/geolocation';
 
   let mounted = false;
   let defaultTimeZone: string | null = null;
-  let hasGeo: boolean = false;
+  let hasGeo = false;
 
   $: {
     if (mounted) {
@@ -123,3 +102,24 @@
     </div>
   {/if}
 </FeatureCard>
+
+<style lang="scss">
+  .geo-table {
+    padding: 0.5rem 0;
+    max-width: 100%;
+    overflow-x: auto;
+    font-size: 0.8rem;
+    overflow-wrap: break-word;
+  }
+
+  .coord-wrapper {
+    padding: 0.2rem 0;
+  }
+
+  .coord-section {
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-wrap: break-word;
+    padding: 0.5rem 0;
+  }
+</style>

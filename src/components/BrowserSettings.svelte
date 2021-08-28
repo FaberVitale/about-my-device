@@ -1,20 +1,21 @@
 <script lang="ts">
-  import FeatureCard from '@/components/FeatureCard.svelte';
-  import Strong from '@/components/Strong.svelte';
+  import FeatureCard from '$components/FeatureCard.svelte';
+  import Strong from '$components/Strong.svelte';
   import { onMount } from 'svelte';
 
   let locale = '';
   let preferredLanguages = '';
   let cookieEnabled = true;
-  let doNotTrack: boolean = false;
-  let deviceMemory: number = 0;
-  let userAgent: string = '';
+  let doNotTrack = false;
+  let deviceMemory = 0;
+  let userAgent = '';
 
   onMount(() => {
     locale = window.navigator.language;
     preferredLanguages = window.navigator.languages.join(', ');
     cookieEnabled = window.navigator.cookieEnabled;
     deviceMemory = (window.navigator as any).deviceMemory;
+
     if (window.navigator.doNotTrack) {
       doNotTrack = !!+window.navigator.doNotTrack;
     }

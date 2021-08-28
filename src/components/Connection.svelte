@@ -4,9 +4,9 @@
   import FeatureCard from './FeatureCard.svelte';
   import Strong from './Strong.svelte';
 
-  let isOnline: boolean = false;
-  let effectiveType: string = '';
-  let downlink: string = '';
+  let isOnline = false;
+  let effectiveType = '';
+  let downlink = '';
   let ipRequest: Promise<string> | null = null;
 
   const requestIp = () => {

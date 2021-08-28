@@ -1,3 +1,20 @@
+<script lang="ts">
+  import { kebabCase } from 'lodash-es';
+
+  export let id: string;
+
+  const normalizedId = kebabCase(id);
+  const href = `#${normalizedId}`;
+</script>
+
+<article class="paper border border-primary" id={normalizedId}>
+  <a class="anchor" {href}>#</a>
+  <heading>
+    <slot name="heading" {normalizedId} />
+  </heading>
+  <slot />
+</article>
+
 <style lang="scss">
   article {
     margin-bottom: 1.5rem;
@@ -30,19 +47,3 @@
     }
   }
 </style>
-
-<script lang="ts">
-  import slugify from 'slugify';
-  export let id: string;
-
-  const normalizedId = slugify(id);
-  const href = `#${normalizedId}`;
-</script>
-
-<article class="paper border border-primary" id={normalizedId}>
-  <a class="anchor" {href}>#</a>
-  <heading>
-    <slot name="heading" />
-  </heading>
-  <slot />
-</article>

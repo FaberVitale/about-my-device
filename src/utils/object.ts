@@ -1,6 +1,6 @@
 type InferValue<Prop extends PropertyKey, Desc> = Desc extends {
-  get(): any;
-  value: any;
+  get(): unknown;
+  value: unknown;
 }
   ? never
   : Desc extends { value: infer T }
@@ -9,12 +9,12 @@ type InferValue<Prop extends PropertyKey, Desc> = Desc extends {
   ? Record<Prop, T>
   : never;
 
-type DefineProperty<
-  Prop extends PropertyKey,
-  Desc extends PropertyDescriptor
-> = Desc extends { writable: any; set(val: any): any }
+type DefineProperty<Prop extends PropertyKey, Desc extends PropertyDescriptor> = Desc extends {
+  writable: unknown;
+  set(val: unknown): unknown;
+}
   ? never
-  : Desc extends { writable: any; get(): any }
+  : Desc extends { writable: unknown; get(): unknown }
   ? never
   : Desc extends { writable: false }
   ? Readonly<InferValue<Prop, Desc>>
@@ -23,13 +23,9 @@ type DefineProperty<
   : Readonly<InferValue<Prop, Desc>>;
 
 export function defineProperty<
-  Obj extends object,
+  Obj extends Record<string | number, unknown>,
   Key extends PropertyKey,
   PDesc extends PropertyDescriptor
->(
-  obj: Obj,
-  prop: Key,
-  val: PDesc,
-): asserts obj is Obj & DefineProperty<Key, PDesc> {
+>(obj: Obj, prop: Key, val: PDesc): asserts obj is Obj & DefineProperty<Key, PDesc> {
   Object.defineProperty(obj, prop, val);
 }

@@ -1,6 +1,10 @@
 .DS_Store
-/node_modules/
-/src/node_modules/@sapper/
+node_modules
+/.svelte
+/.svelte-kit
+/build
+/functions
 yarn-error.log
 /__sapper__/
 *.log
+tsconfig.tsbuildinfo

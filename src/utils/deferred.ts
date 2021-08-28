@@ -1,6 +1,6 @@
 export interface Deferred<T> extends Promise<T> {
   readonly resolve: (value?: T | PromiseLike<T>) => void;
-  readonly reject: (reason?: any) => void;
+  readonly reject: (reason?: unknown) => void;
 }
 
 /**
@@ -13,8 +13,8 @@ export interface Deferred<T> extends Promise<T> {
  * @see https://deno.land/std@0.90.0/async/deferred.ts
  */
 export function deferred<T>(): Deferred<T> {
-  let resolvePromise: any;
-  let rejectPromise: any;
+  let resolvePromise: unknown;
+  let rejectPromise: unknown;
 
   const promise = new Promise<T>((resolve, reject): void => {
     resolvePromise = resolve;

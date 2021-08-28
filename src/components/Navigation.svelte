@@ -1,21 +1,3 @@
-<style lang="scss">
-  code {
-    color: var(--primary);
-    font-size: 0.8rem;
-  }
-
-  ul {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-row-gap: 0.2rem;
-    padding-left: 1rem;
-  }
-
-  section {
-    padding: 0.4rem 0;
-  }
-</style>
-
 <script type="ts" context="module">
   const navitationTypeMapping: Record<number | string, string> = {
     '0': 'TYPE_NAVIGATE(0)',
@@ -27,10 +9,10 @@
 
 <script type="ts">
   import { onMount } from 'svelte';
-  import { deferred } from '@/utils/deferred';
-  import type { Deferred } from '@/utils/deferred';
+  import { deferred } from '$utils/deferred';
+  import type { Deferred } from '$utils/deferred';
   import FeatureCard from './FeatureCard.svelte';
-  import { useFirstRender } from '@/utils/useFirstRender';
+  import { useFirstRender } from '$utils/useFirstRender';
 
   const navigationTypeUsingPerformanceNavigationApi: Deferred<number> = deferred();
   const navigationTypeUsingPerformanceNavigationTiming: Deferred<string> = deferred();
@@ -80,9 +62,7 @@
         throw new Error('PerformanceNavigationTiming.type is not supported');
       }
 
-      navigationTypeUsingPerformanceNavigationTiming.resolve(
-        performanceTimingNavigationType,
-      );
+      navigationTypeUsingPerformanceNavigationTiming.resolve(performanceTimingNavigationType);
     } catch (navigationApiError) {
       navigationTypeUsingPerformanceNavigationTiming.reject(navigationApiError);
     }
@@ -96,12 +76,11 @@
     <ul>
       <li>
         {#await navigationTypeUsingPerformanceNavigationApi then navigationType}
-          <code
-            >{`navigation.type: ${navitationTypeMapping[navigationType]}`}</code>
+          <code>{`navigation.type: ${navitationTypeMapping[navigationType]}`}</code>
 
-          <a
-            href="https://developer.mozilla.org/en-US/docs/Web/API/PerformanceNavigation"
-            >MDN page</a>
+          <a href="https://developer.mozilla.org/en-US/docs/Web/API/PerformanceNavigation"
+            >MDN page</a
+          >
         {:catch probingError}
           {probingError ? probingError.message : ''}
         {/await}
@@ -111,7 +90,8 @@
           <code>{`navigationEntry.type: ${navigationType}`}</code>
           <a
             href="https://developer.mozilla.org/en-US/docs/Web/API/PerformanceNavigationTiming/type"
-            >MDN page</a>
+            >MDN page</a
+          >
         {:catch probingError}
           {probingError ? probingError.message : ''}
         {/await}
@@ -124,3 +104,21 @@
     <p>host <code>{$firstRender ? '' : location.host}</code></p>
   </section>
 </FeatureCard>
+
+<style lang="scss">
+  code {
+    color: var(--primary);
+    font-size: 0.8rem;
+  }
+
+  ul {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-row-gap: 0.2rem;
+    padding-left: 1rem;
+  }
+
+  section {
+    padding: 0.4rem 0;
+  }
+</style>

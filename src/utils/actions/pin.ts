@@ -3,7 +3,11 @@ export interface PinParams {
   zIndex?: number;
 }
 
-export function pin(node: HTMLElement, params: PinParams) {
+export interface PinActionPayload {
+  update(params: PinParams): void;
+}
+
+export function pin(node: HTMLElement, params: PinParams): PinActionPayload {
   function applyPin({ active, zIndex = 20 }: PinParams) {
     if (active) {
       const { top, left, width } = node.getBoundingClientRect();

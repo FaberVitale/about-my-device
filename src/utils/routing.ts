@@ -1,6 +1,6 @@
 import { onMount } from 'svelte';
 
-export function useRestoreAnchorPosition() {
+export function useRestoreAnchorPosition(): void {
   onMount(() => {
     const fragment = window.location.hash;
 
@@ -10,10 +10,7 @@ export function useRestoreAnchorPosition() {
       const activeAnchor = document.getElementById(selectedId);
 
       if (activeAnchor) {
-        window.scrollTo(
-          0,
-          activeAnchor.getBoundingClientRect().top + window.scrollY,
-        );
+        window.scrollTo(0, activeAnchor.getBoundingClientRect().top + window.scrollY);
       }
     }
   });

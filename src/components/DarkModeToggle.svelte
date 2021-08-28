@@ -1,17 +1,5 @@
-<style lang="scss">
-  @import 'src/styles/_mixins.scss';
-
-  .label-text {
-    @include sr-only();
-  }
-  .icon {
-    width: 24px;
-    height: 24px;
-    color: var(--primary);
-  }
-</style>
-
 <script lang="ts">
+  import { browser } from '$app/env';
   import { onMount } from 'svelte';
   import { setStorageItem } from 'storage-helpers';
 
@@ -19,7 +7,7 @@
   let mounted = false;
 
   $: {
-    if (__BROWSER__ && mounted) {
+    if (browser && mounted) {
       if (toggle) {
         window.document.documentElement.classList.add('dark');
         setStorageItem('color-scheme', 'dark');
@@ -51,7 +39,8 @@
             stroke="currentColor"
             stroke-width="2"
             stroke-linecap="round"
-            stroke-linejoin="round">
+            stroke-linejoin="round"
+          >
             {#if toggle}
               <circle cx="12" cy="12" r="5" />
               <line x1="12" y1="1" x2="12" y2="3" />
@@ -73,9 +62,23 @@
           id="dark-mode-switcher"
           name="dark-mode-switcher"
           type="checkbox"
-          bind:checked={toggle} />
+          bind:checked={toggle}
+        />
         <span class="paper-switch-slider round" />
       </label>
     </fieldset>
   </form>
 {/if}
+
+<style lang="scss">
+  @import 'src/styles/_mixins.scss';
+
+  .label-text {
+    @include sr-only();
+  }
+  .icon {
+    width: 24px;
+    height: 24px;
+    color: var(--primary);
+  }
+</style>

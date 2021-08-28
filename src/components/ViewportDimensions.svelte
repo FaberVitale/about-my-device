@@ -1,53 +1,15 @@
-<style lang="scss">
-  .breakpoint::before {
-    content: 'xs';
-    text-transform: uppercase;
-    font-weight: 900;
-  }
-
-  @media (min-width: 576px) {
-    .breakpoint::before {
-      content: 'sm';
-    }
-  }
-
-  @media (min-width: 768px) {
-    .breakpoint::before {
-      content: 'md';
-    }
-  }
-
-  @media (min-width: 992px) {
-    .breakpoint::before {
-      content: 'lg';
-    }
-  }
-
-  @media (min-width: 1200px) {
-    .breakpoint::before {
-      content: 'xl';
-    }
-  }
-
-  @media (min-width: 1400px) {
-    .breakpoint::before {
-      content: 'xxl';
-    }
-  }
-</style>
-
 <script lang="ts">
-  import Strong from '@/components/Strong.svelte';
-  import FeatureCard from '@/components/FeatureCard.svelte';
+  import Strong from '$components/Strong.svelte';
+  import FeatureCard from '$components/FeatureCard.svelte';
   import { onMount } from 'svelte';
 
   const positions = ['top', 'right', 'bottom', 'left'] as const;
 
-  let innerWindowWidth: number = 0;
-  let widthWithoutScrollbar: number = 0;
-  let innerWindowHeight: number = 0;
-  let heightWithoutScrollbar: number = 0;
-  let orientation: string = '';
+  let innerWindowWidth = 0;
+  let widthWithoutScrollbar = 0;
+  let innerWindowHeight = 0;
+  let heightWithoutScrollbar = 0;
+  let orientation = '';
 
   let safeInset = {
     top: '0px',
@@ -73,9 +35,7 @@
       };
     };
 
-    const onOrientationChange = ({
-      matches,
-    }: MediaQueryListEvent | MediaQueryList) => {
+    const onOrientationChange = ({ matches }: MediaQueryListEvent | MediaQueryList) => {
       if (matches) {
         orientation = 'landscape';
       } else {
@@ -127,3 +87,41 @@
     </p>
   {/each}
 </FeatureCard>
+
+<style lang="scss">
+  .breakpoint::before {
+    content: 'xs';
+    text-transform: uppercase;
+    font-weight: 900;
+  }
+
+  @media (min-width: 576px) {
+    .breakpoint::before {
+      content: 'sm';
+    }
+  }
+
+  @media (min-width: 768px) {
+    .breakpoint::before {
+      content: 'md';
+    }
+  }
+
+  @media (min-width: 992px) {
+    .breakpoint::before {
+      content: 'lg';
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .breakpoint::before {
+      content: 'xl';
+    }
+  }
+
+  @media (min-width: 1400px) {
+    .breakpoint::before {
+      content: 'xxl';
+    }
+  }
+</style>
