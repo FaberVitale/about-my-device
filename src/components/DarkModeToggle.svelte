@@ -1,13 +1,12 @@
 <script lang="ts">
-  import { browser } from '$app/env';
   import { onMount } from 'svelte';
   import { setStorageItem } from 'storage-helpers';
 
   let toggle = false;
   let mounted = false;
 
-  $: {
-    if (browser && mounted) {
+  const updateDarkMode = ({ toggle, mounted }: { toggle: boolean; mounted: boolean }) => {
+    if (mounted) {
       if (toggle) {
         window.document.documentElement.classList.add('dark');
         setStorageItem('color-scheme', 'dark');
@@ -16,7 +15,9 @@
         setStorageItem('color-scheme', 'light');
       }
     }
-  }
+  };
+
+  $: updateDarkMode({ mounted, toggle });
 
   onMount(() => {
     mounted = true;

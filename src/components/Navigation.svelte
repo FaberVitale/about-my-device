@@ -52,11 +52,11 @@
     };
 
     try {
-      const performanceTimingNavigationType:
-        | string
-        | undefined = (window.performance?.getEntriesByType(
-        'navigation',
-      )?.[0] as PerformanceNavigationEntryWithType)?.type;
+      const performanceTimingNavigationType: string | undefined = (
+        window.performance?.getEntriesByType(
+          'navigation',
+        )?.[0] as PerformanceNavigationEntryWithType
+      )?.type;
 
       if (typeof performanceTimingNavigationType !== 'string') {
         throw new Error('PerformanceNavigationTiming.type is not supported');

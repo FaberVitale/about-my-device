@@ -4,7 +4,7 @@
 
 declare type HTMLElementEvent<
   T extends HTMLElement = HTMLElement,
-  U extends HTMLElement = HTMLElement
+  U extends HTMLElement = HTMLElement,
 > = Event & {
   target: T & EventTarget;
   currentTarget: U & EventTarget;

@@ -25,7 +25,7 @@ type DefineProperty<Prop extends PropertyKey, Desc extends PropertyDescriptor> =
 export function defineProperty<
   Obj extends Record<string | number, unknown>,
   Key extends PropertyKey,
-  PDesc extends PropertyDescriptor
+  PDesc extends PropertyDescriptor,
 >(obj: Obj, prop: Key, val: PDesc): asserts obj is Obj & DefineProperty<Key, PDesc> {
   Object.defineProperty(obj, prop, val);
 }
