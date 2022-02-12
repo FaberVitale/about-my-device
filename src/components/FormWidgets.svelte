@@ -50,7 +50,6 @@
   <section>
     <h4>Input</h4>
     <form class="form" on:submit|preventDefault>
-      <!-- svelte-ignore a11y-no-onchange -->
       <label
         >type
         <select name="type" on:change={onSelectTypeChange}>

@@ -22,8 +22,8 @@
     }
   }
 
-  let currentPos: Promise<GeolocationPosition>;
-  let resolvedLocation: Promise<ReverseGeocoding>;
+  let currentPos: Promise<GeolocationPosition> | undefined;
+  let resolvedLocation: Promise<ReverseGeocoding> | undefined;
 
   function handleGetPosClick() {
     currentPos = getCurrentPos();

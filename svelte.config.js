@@ -20,9 +20,6 @@ const config = {
     // specifying a different adapter
     adapter: adapterStatic(),
 
-    // hydrate the <div id="svelte"> element in src/app.html
-    target: '#svelte',
-
     vite: vite.defineConfig({
       ssr: {
         noExternal: Object.keys(pkg.dependencies || {}),
